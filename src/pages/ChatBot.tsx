@@ -55,7 +55,7 @@ const formatMessageWithLinks = (text: string) => {
     
     // Check if it's a course material link
     if (linkUrl.includes('/course/')) {
-      const materialType = linkUrl.split('/').pop() || '';
+      const slug = linkUrl.split('/').pop() || '';
       
       // Define material-specific information
       const materialInfo: Record<string, {icon: React.ReactNode, bgClass: string, textClass: string, description: string}> = {
@@ -71,6 +71,30 @@ const formatMessageWithLinks = (text: string) => {
           textClass: "text-blue-600 dark:text-blue-300",
           description: "30+ contoh teks • Panduan praktis"
         },
+        'matematika-dasar-aljabar-lanjutan': {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M2 12h10"></path><path d="M9 4v16"></path><path d="m3 9 3 3-3 3"></path><path d="M14 4h.01"></path><path d="M14 20h.01"></path><path d="M18 4h.01"></path><path d="M18 20h.01"></path><path d="M22 4h.01"></path><path d="M22 20h.01"></path></svg>,
+          bgClass: "bg-purple-100 dark:bg-purple-900/30",
+          textClass: "text-purple-600 dark:text-purple-300",
+          description: "Aljabar lanjutan • 20+ latihan soal"
+        },
+        'bahasa-indonesia-ejaan-tanda-baca': {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>,
+          bgClass: "bg-blue-100 dark:bg-blue-900/30",
+          textClass: "text-blue-600 dark:text-blue-300",
+          description: "Ejaan & tanda baca • Panduan PUEBI"
+        },
+        'tps-logika-analitis': {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M21 9V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3"></path><path d="M3 16v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"></path><path d="M12 6v12"></path><path d="M3 12h18"></path></svg>,
+          bgClass: "bg-amber-100 dark:bg-amber-900/30",
+          textClass: "text-amber-600 dark:text-amber-300",
+          description: "Logika & analitis • Strategi TPS"
+        },
+        'fisika-dinamika-newton': {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 22v-7l-2-2"></path><path d="M17 8v5l2 2"></path><path d="M7 8v5l-2 2"></path><path d="M17.5 17a4 4 0 0 0-8 0"></path><path d="M6 12a4 4 0 0 0 8 0"></path><path d="M18 12a4 4 0 0 0-8 0"></path></svg>,
+          bgClass: "bg-cyan-100 dark:bg-cyan-900/30",
+          textClass: "text-cyan-600 dark:text-cyan-300",
+          description: "Hukum Newton • Dinamika gerak"
+        },
         'default': {
           icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 2v6.5"></path><path d="M18.5 12H22"></path><path d="M12 22v-6.5"></path><path d="M8 12H2"></path><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10"></path><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10"></path></svg>,
           bgClass: "bg-green-100 dark:bg-green-900/30",
@@ -79,7 +103,7 @@ const formatMessageWithLinks = (text: string) => {
         }
       };
       
-      const info = materialInfo[materialType] || materialInfo['default'];
+      const info = materialInfo[slug] || materialInfo['default'];
       
       parts.push(
         <Link 
@@ -188,17 +212,17 @@ export default function ChatBot() {
     if (query.toLowerCase().includes('belajar') || query.toLowerCase().includes('efektif')) {
       return 'Untuk belajar UTBK-SNBT secara efektif, kamu bisa:\n\n1. Buat jadwal belajar yang terstruktur\n2. Fokus pada pemahaman konsep, bukan hanya menghafal\n3. Latihan soal secara rutin dan analisis kesalahan\n4. Bergabung dengan kelompok belajar\n5. Gunakan metode Pomodoro (25 menit belajar, 5 menit istirahat)\n\nDi EduBot, kami menyediakan materi terstruktur dan latihan soal yang bisa kamu akses kapan saja.'
     } else if (query.toLowerCase().includes('tps') || (query.toLowerCase().includes('materi') && !query.toLowerCase().includes('penalaran') && !query.toLowerCase().includes('literasi'))) {
-      return 'Materi untuk TPS (Tes Potensi Skolastik) meliputi:\n\n- Kemampuan Penalaran Umum\n- Pengetahuan Kuantitatif\n- Literasi dalam Bahasa Indonesia\n- Literasi dalam Bahasa Inggris\n\nSetiap bagian memiliki karakteristik dan strategi khusus dalam pengerjaannya. Kamu bisa mempelajari materi-materi tersebut di bagian "Materi" di website EduBot SNBT.'
+      return 'Materi untuk TPS (Tes Potensi Skolastik) meliputi:\n\n- Kemampuan Penalaran Umum\n- Pengetahuan Kuantitatif\n- Literasi dalam Bahasa Indonesia\n- Literasi dalam Bahasa Inggris\n\nSetiap bagian memiliki karakteristik dan strategi khusus dalam pengerjaannya. Kamu bisa mempelajari materi-materi tersebut di bagian "Materi" di website EduBot SNBT.\n\nBerikut adalah beberapa materi yang tersedia:\n\n[Logika dan Analitis TPS](/course/tps-logika-analitis)'
     } else if (query.toLowerCase().includes('passing grade') || query.toLowerCase().includes('kedokteran')) {
-      return 'Passing grade jurusan Kedokteran UI berkisar antara 700-750 (dari skala 1000). Namun perlu diingat bahwa passing grade bisa berubah setiap tahunnya tergantung pada tingkat persaingan. Untuk masuk kedokteran, kamu perlu mempersiapkan diri dengan sangat baik, terutama untuk mata pelajaran IPA seperti Biologi, Kimia, dan Fisika.'
+      return 'Passing grade jurusan Kedokteran UI berkisar antara 700-750 (dari skala 1000). Namun perlu diingat bahwa passing grade bisa berubah setiap tahunnya tergantung pada tingkat persaingan. Untuk masuk kedokteran, kamu perlu mempersiapkan diri dengan sangat baik, terutama untuk mata pelajaran IPA seperti Biologi, Kimia, dan Fisika.\n\nBeberapa materi yang mungkin berguna untuk persiapan:\n\n[Dinamika Newton](/course/fisika-dinamika-newton)\n[Stoikiometri Kimia](/course/kimia-stoikiometri)\n[Sistem Peredaran Darah](/course/biologi-sistem-peredaran-darah)'
     } else if (query.toLowerCase().includes('literasi') && query.toLowerCase().includes('bahasa inggris')) {
       return 'Tips mengerjakan soal Literasi Bahasa Inggris:\n\n1. Perbanyak membaca artikel berbahasa Inggris untuk meningkatkan vocabulary\n2. Pahami struktur teks dan identifikasi ide pokok\n3. Latihan soal reading comprehension secara rutin\n4. Pelajari teknik skimming dan scanning untuk efisiensi waktu\n5. Perhatikan kata kunci dalam pertanyaan\n\nKamu bisa mencoba latihan soal Literasi Bahasa Inggris di bagian "Tryout" kami.'
-    } else if (query.toLowerCase().includes('penalaran matematika')) {
-      return 'Berikut adalah materi Penalaran Matematika yang bisa kamu pelajari:\n\nPenalaran Matematika adalah kemampuan untuk menganalisis informasi kuantitatif dan menerapkan prinsip-prinsip matematika untuk menyelesaikan masalah.\n\nTopik yang dibahas meliputi:\n• Aljabar dasar dan fungsi\n• Geometri dan pengukuran\n• Statistika dan probabilitas\n• Logika matematika\n\n[Materi Penalaran Matematika](/course/penalaran-matematika)\n\nMateri ini mencakup 45+ latihan soal dan 5 video pembelajaran yang akan membantu kamu menguasai konsep-konsep penting. Apakah kamu ingin mempelajari topik tertentu dalam Penalaran Matematika?'
-    } else if (query.toLowerCase().includes('literasi bahasa indonesia')) {
-      return 'Berikut adalah materi Literasi Bahasa Indonesia yang bisa kamu pelajari:\n\nLiterasi Bahasa Indonesia dalam UTBK-SNBT mengukur kemampuan kamu dalam memahami, menganalisis, dan menggunakan informasi dari teks berbahasa Indonesia.\n\nTopik yang dibahas meliputi:\n• Memahami informasi tersurat dan tersirat\n• Mengidentifikasi ide pokok dan pendukung\n• Menganalisis struktur teks\n• Memahami hubungan antar gagasan\n\n[Materi Literasi Bahasa Indonesia](/course/literasi-bahasa-indonesia)\n\nMateri ini dilengkapi dengan 30+ contoh teks beserta analisisnya dan panduan praktis untuk menghadapi soal-soal literasi. Apakah kamu ingin latihan soal untuk topik ini?'
+    } else if (query.toLowerCase().includes('penalaran matematika') || query.toLowerCase().includes('matematika')) {
+      return 'Berikut adalah materi Penalaran Matematika yang bisa kamu pelajari:\n\nPenalaran Matematika adalah kemampuan untuk menganalisis informasi kuantitatif dan menerapkan prinsip-prinsip matematika untuk menyelesaikan masalah.\n\nTopik yang dibahas meliputi:\n• Aljabar dasar dan fungsi\n• Geometri dan pengukuran\n• Statistika dan probabilitas\n• Logika matematika\n\n[Matematika Dasar: Aljabar Lanjutan](/course/matematika-dasar-aljabar-lanjutan)\n\nMateri ini mencakup 20+ latihan soal dan video pembelajaran yang akan membantu kamu menguasai konsep-konsep penting. Apakah kamu ingin mempelajari topik tertentu dalam Penalaran Matematika?'
+    } else if (query.toLowerCase().includes('literasi bahasa indonesia') || query.toLowerCase().includes('bahasa indonesia')) {
+      return 'Berikut adalah materi Literasi Bahasa Indonesia yang bisa kamu pelajari:\n\nLiterasi Bahasa Indonesia dalam UTBK-SNBT mengukur kemampuan kamu dalam memahami, menganalisis, dan menggunakan informasi dari teks berbahasa Indonesia.\n\nTopik yang dibahas meliputi:\n• Memahami informasi tersurat dan tersirat\n• Mengidentifikasi ide pokok dan pendukung\n• Menganalisis struktur teks\n• Memahami hubungan antar gagasan\n\n[Bahasa Indonesia: Ejaan dan Tanda Baca](/course/bahasa-indonesia-ejaan-tanda-baca)\n\nMateri ini dilengkapi dengan contoh teks beserta analisisnya dan panduan praktis untuk menghadapi soal-soal literasi. Apakah kamu ingin latihan soal untuk topik ini?'
     } else {
-      return 'Terima kasih atas pertanyaanmu. Sebagai asisten AI untuk persiapan UTBK-SNBT, saya bisa membantumu dengan berbagai informasi seputar persiapan ujian, materi pembelajaran, strategi belajar, dan informasi perguruan tinggi. Silakan tanyakan hal spesifik yang ingin kamu ketahui tentang UTBK-SNBT.'
+      return 'Terima kasih atas pertanyaanmu. Sebagai asisten AI untuk persiapan UTBK-SNBT, saya bisa membantumu dengan berbagai informasi seputar persiapan ujian, materi pembelajaran, strategi belajar, dan informasi perguruan tinggi. Silakan tanyakan hal spesifik yang ingin kamu ketahui tentang UTBK-SNBT.\n\nBeberapa materi populer yang tersedia:\n\n[Matematika Dasar: Aljabar Lanjutan](/course/matematika-dasar-aljabar-lanjutan)\n[Bahasa Indonesia: Ejaan dan Tanda Baca](/course/bahasa-indonesia-ejaan-tanda-baca)\n[TPS: Logika dan Analitis](/course/tps-logika-analitis)\n[Fisika: Dinamika Newton](/course/fisika-dinamika-newton)'
     }
   }
   
