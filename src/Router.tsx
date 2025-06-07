@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { AppLayout } from './components/app-layout'
 import NotMatch from './pages/NotMatch'
-import Dashboard from './pages/Dashboard'
 import Sample from './pages/Sample'
 import ComingSoon from './pages/ComingSoon'
 import HomePage from './pages/Homepage'
