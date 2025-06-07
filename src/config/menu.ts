@@ -1,8 +1,10 @@
 import {
-    CircleAlert,
-    Files,
-    Gauge,
-    LucideIcon
+    BookOpen,
+    MessageSquare,
+    Home,
+    Trophy,
+    LucideIcon,
+    Brain
 } from 'lucide-react'
 
 type MenuItemType = {
@@ -16,28 +18,28 @@ type MenuType = MenuItemType[]
 
 export const mainMenu: MenuType = [
     {
-        title: 'Dashboard',
+        title: 'Beranda',
         url: '/',
-        icon: Gauge
+        icon: Home
     },
     {
-        title: 'Pages',
-        url: '/pages',
-        icon: Files,
-        items: [
-            {
-                title: 'Sample Page',
-                url: '/pages/sample',
-            },
-            {
-                title: 'Coming Soon',
-                url: '/pages/feature',
-            },
-        ]
+        title: 'Chatbot',
+        url: '/chatbot',
+        icon: MessageSquare
     },
     {
-        title: 'Error',
-        url: '/404',
-        icon: CircleAlert,
+        title: 'Materi',
+        url: '/course',
+        icon: BookOpen
     },
+    {
+        title: 'Tryout',
+        url: '/tryout',
+        icon: Trophy
+    },
+    {
+        title: 'Statistik',
+        url: '/statistik-user',
+        icon: Brain
+    }
 ]

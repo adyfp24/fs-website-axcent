@@ -1,6 +1,6 @@
 type AppConfigType = {
     name: string,
-    github: {
+    github?: {
         title: string,
         url: string
     },
@@ -11,14 +11,10 @@ type AppConfigType = {
 }
 
 export const appConfig: AppConfigType = {
-    name: import.meta.env.VITE_APP_NAME ?? "Sample App",
-    github: {
-        title: "React Shadcn Starter",
-        url: "https://github.com/hayyi2/react-shadcn-starter",
-    },
+    name: "EduBot SNBT",
     author: {
-        name: "hayyi",
-        url: "https://github.com/hayyi2/",
+        name: "EduBot Team",
+        url: "https://edubot-snbt.com",
     }
 }
 
