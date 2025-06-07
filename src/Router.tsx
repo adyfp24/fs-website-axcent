@@ -1,3 +1,5 @@
+// src/Router.tsx (MODIFIED)
+
 import { Routes, Route } from 'react-router-dom'
 import { AppLayout } from './components/app-layout'
 import NotMatch from './pages/NotMatch'
@@ -23,7 +25,8 @@ export default function Router() {
                 <Route path="chatbot" element={<ChatBot />} />
                 <Route path="statistik-user" element={<StatistikUser />} />
                 <Route path="course" element={<Course />} />
-                <Route path="course/:id" element={<CourseDetail />} />
+                {/* PERUBAHAN DI SINI: Dari :id menjadi :slug */}
+                <Route path="course/:slug" element={<CourseDetail />} /> 
                 <Route path="tryout" element={<Tryout />} />
                 <Route path="tryout/:id" element={<TryoutDetail />} />
                 <Route path="*" element={<NotMatch />} />

@@ -1,4 +1,4 @@
-// src/pages/Course.tsx (MODIFIED - TOMBOL "PELAJARI SEKARANG" WARNA BIRU)
+// src/pages/Course.tsx (FINAL - SESUAI DISKUSI SEBELUMNYA)
 
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
@@ -170,7 +170,7 @@ const Course = () => {
                 </div>
               </CardContent>
               <CardFooter>
-                {/* PERUBAHAN DI SINI: Tombol "Pelajari Sekarang" menjadi biru */}
+                {/* Tombol "Pelajari Sekarang" menjadi biru */}
                 <Button 
                   asChild 
                   className="w-full bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 ease-in-out"
