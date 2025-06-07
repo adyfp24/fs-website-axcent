@@ -9,6 +9,7 @@ import StatistikUser from './pages/StatistikUser'
 import Course from './pages/Course'
 import CourseDetail from './pages/CourseDetail'
 import Tryout from './pages/Tryout'
+import TryoutDetail from './pages/TryoutDetail'
 import Login from './pages/Login'
 import Register from './pages/Register'
 
@@ -24,6 +25,7 @@ export default function Router() {
                 <Route path="course" element={<Course />} />
                 <Route path="course/:id" element={<CourseDetail />} />
                 <Route path="tryout" element={<Tryout />} />
+                <Route path="tryout/:id" element={<TryoutDetail />} />
                 <Route path="*" element={<NotMatch />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />

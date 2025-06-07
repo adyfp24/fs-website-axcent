@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Clock, BookOpen, Award, BarChart2, ChevronRight, Calendar, AlertTriangle } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function Tryout() {
   return (
@@ -30,6 +31,7 @@ export default function Tryout() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
         {[
           {
+            id: "1",
             title: "Tryout Simulasi Full Test #1",
             category: "Simulasi Full Test",
             duration: "120 menit",
@@ -39,6 +41,7 @@ export default function Tryout() {
             isNew: true
           },
           {
+            id: "2",
             title: "Latihan Penalaran Matematika",
             category: "Penalaran Matematika",
             duration: "40 menit",
@@ -48,6 +51,7 @@ export default function Tryout() {
             isNew: false
           },
           {
+            id: "3",
             title: "Tryout Simulasi Full Test #2",
             category: "Simulasi Full Test",
             duration: "120 menit",
@@ -57,6 +61,7 @@ export default function Tryout() {
             isNew: true
           },
           {
+            id: "4",
             title: "Literasi Bahasa Indonesia",
             category: "Literasi Bahasa",
             duration: "30 menit",
@@ -66,6 +71,7 @@ export default function Tryout() {
             isNew: false
           },
           {
+            id: "5",
             title: "Penalaran Umum Paket 3",
             category: "Penalaran Umum",
             duration: "35 menit",
@@ -75,6 +81,7 @@ export default function Tryout() {
             isNew: false
           },
           {
+            id: "6",
             title: "Literasi Bahasa Inggris",
             category: "Literasi Bahasa",
             duration: "30 menit",
@@ -134,11 +141,13 @@ export default function Tryout() {
                 </div>
               )}
 
-              <Button variant="outline" className="w-full mt-2">
-                {tryout.completion === "0%" ? "Mulai Tryout" : 
-                 tryout.completion === "100%" ? "Lihat Hasil" : "Lanjutkan"}
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link to={`/tryout/${tryout.id}`}>
+                <Button variant="outline" className="w-full mt-2">
+                  {tryout.completion === "0%" ? "Mulai Tryout" : 
+                  tryout.completion === "100%" ? "Lihat Hasil" : "Lanjutkan"}
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </Card>
         ))}
