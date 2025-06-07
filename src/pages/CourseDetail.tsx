@@ -1,6 +1,5 @@
 // src/pages/CourseDetail.tsx
 
-import React from 'react';
 import { useParams, Link } from 'react-router-dom'; // Untuk mengambil parameter dari URL dan navigasi
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
